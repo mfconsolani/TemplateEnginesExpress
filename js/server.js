@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const handlerClass_1 = __importDefault(require("./handlerClass"));
+const path_1 = __importDefault(require("path"));
 const handlebars = require('express-handlebars');
 // Global variables
 const app = express_1.default();
@@ -21,7 +22,7 @@ app.engine('hbs', handlebars({
 }));
 app.set('view engine', 'hbs');
 app.set('views', './views');
-app.use(express_1.default.static(__dirname + '/public'));
+app.use(express_1.default.static(path_1.default.join(__dirname, "../public")));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 // Server Port config

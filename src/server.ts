@@ -1,5 +1,6 @@
 import express, {Application, Request, Response} from 'express';
 import MetodosServidor, { Product } from './handlerClass';
+import path from 'path'; 
 
 const handlebars = require('express-handlebars');
 
@@ -20,8 +21,8 @@ app.engine('hbs',
     handlebars({
         extname: '.hbs',
         defaultLayout: 'index.hbs',
-        layoutsDir: __dirname + '/views/layouts',
-        partialsDir: __dirname + '/views/partials'
+        layoutsDir: path.join(__dirname, '../views/layouts'),
+        partialsDir: path.join(__dirname, '../views/partials')
         })
     );
 
@@ -29,7 +30,7 @@ app.set('view engine', 'hbs');
 
 app.set('views', './views');
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, "../public")));
 
 app.use(express.json());
 
