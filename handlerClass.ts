@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 
+
 export interface Product {
     title: string,
     price: number,
@@ -95,11 +96,14 @@ class MetodosServidor{
         if (id !== 0 && this.database.length > 0 && itemToRemove){
 
             this.database = this.database.filter(element => element.id !== id) 
-        
             return response.status(200).json(itemToRemove);
         } 
 
         return response.status(200).send({ alerta: 'producto no encontrado' })
+    }
+
+    renderApp(request: Request, response: Response){
+        response.render('main', {data: this.database})
     }
 
 };

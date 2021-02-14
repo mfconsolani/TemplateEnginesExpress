@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+;
 class MetodosServidor {
     constructor(database) {
         this.database = database;
@@ -10,6 +11,7 @@ class MetodosServidor {
             ? response.json(this.database)
             : response.status(200).json({ alerta: 'no hay productos cargados' });
     }
+    ;
     displayOne(request, response) {
         let { id } = request.params;
         id = parseInt(id);
@@ -56,6 +58,9 @@ class MetodosServidor {
             return response.status(200).json(itemToRemove);
         }
         return response.status(200).send({ alerta: 'producto no encontrado' });
+    }
+    renderApp(request, response) {
+        response.render('main', { data: this.database });
     }
 }
 ;

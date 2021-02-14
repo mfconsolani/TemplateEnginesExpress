@@ -5,17 +5,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const handlerClass_1 = __importDefault(require("./handlerClass"));
-// Server set-up
+const handlebars = require('express-handlebars');
+// Global variables
 const app = express_1.default();
 const PORT = 8080;
-// Global variables
 const router = express_1.default.Router();
 let db = [];
 let instance = new handlerClass_1.default(db);
 // Middleware
+app.engine('hbs', handlebars({
+    extname: '.hbs',
+    defaultLayout: 'index.hbs',
+    layoutsDir: __dirname + '/views/layouts',
+    partialsDir: __dirname + '/views/partials'
+}));
+app.set('view engine', 'hbs');
+app.set('views', './views');
 app.use(express_1.default.static(__dirname + '/public'));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
+// Server Port config
 const server = app.listen(PORT, () => {
     console.log(`Servidor escuchando en puerto ${server.address().port}`);
 });
@@ -26,6 +35,13 @@ server.on("Error", (error) => {
 // Listar todos los productos
 router.get('/productos', (req, res) => {
     instance.displayAll(res);
+});
+// 
+router.get('/productos/vista', (req, res) => {
+    // res.render('main', { data: instance.database });
+    instance.renderApp(req, res);
+    // const renderApp:any = res.render('main', {data: instance.database})
+    // return renderApp();
 });
 // Listar un producto específico
 router.get('/productos/:id', (req, res) => {
@@ -48,4 +64,3 @@ router.delete('/productos/:id', (req, res) => {
 });
 // Router
 app.use('/api', router);
-// Server Port config

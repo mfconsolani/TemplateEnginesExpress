@@ -1,13 +1,13 @@
 import express, {Application, Request, Response} from 'express';
 import MetodosServidor, { Product } from './handlerClass';
 
-// Server set-up
+const handlebars = require('express-handlebars');
+
+// Global variables
 const app:Application = express();
 
 const PORT = 8080;
 
-
-// Global variables
 const router = express.Router();
 
 let db:Array<Product> = [];
@@ -16,11 +16,24 @@ let instance = new MetodosServidor(db);
 
 // Middleware
 
-app.use(express.static(__dirname + '/public'))
+app.engine('hbs', 
+    handlebars({
+        extname: '.hbs',
+        defaultLayout: 'index.hbs',
+        layoutsDir: __dirname + '/views/layouts',
+        partialsDir: __dirname + '/views/partials'
+        })
+    );
 
-app.use(express.json())
+app.set('view engine', 'hbs');
 
-app.use(express.urlencoded({extended: true}))
+app.set('views', './views');
+
+app.use(express.static(__dirname + '/public'));
+
+app.use(express.json());
+
+app.use(express.urlencoded({extended: true}));
 
 // Server Port config
 
@@ -37,6 +50,12 @@ server.on("Error", (error:Error) => {
 // Listar todos los productos
 router.get('/productos', (req: Request, res: Response) => {    
     instance.displayAll(res);
+});
+
+// 
+
+router.get('/productos/vista', (req: Request, res: Response) => {    
+    instance.renderApp(req, res);
 });
 
 // Listar un producto específico
@@ -58,7 +77,7 @@ router.post('/productos/', (req: Request, res: Response)=> {
 
 router.put('/productos/:id', (req: Request, res: Response)=> {
     instance.replaceData(req, res);
-})
+});
 
 // Delete requests
 
@@ -66,7 +85,7 @@ router.put('/productos/:id', (req: Request, res: Response)=> {
 
 router.delete('/productos/:id', (req: Request, res: Response) => {
     instance.deleteItem(req, res)
-})
+});
 
 // Router
 
