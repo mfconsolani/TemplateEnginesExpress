@@ -32,7 +32,7 @@ class MetodosServidor{
         
         const productSearched = this.database.filter((product: Product) => product.id === id)[0];
 
-        if (id !== 0 && this.database.length > 0 && productSearched){
+        if (id !== 0 && this.database.length && productSearched){
 
             return response.status(200).json(productSearched)
         } 
@@ -60,9 +60,6 @@ class MetodosServidor{
         ? response.status(201).redirect('/index.html')
         : response.status(201).json(nuevoItem)
 
-        // console.log(request.headers)
-        // response.status(201).json(nuevoItem)
-
     }
 
     replaceData(request: Request, response: Response){
@@ -74,7 +71,7 @@ class MetodosServidor{
         let itemToModify: any = this.database.filter(element => element.id === id)[0]   
 
         
-        if (id !== 0 && this.database.length > 0 && itemToModify){
+        if (id !== 0 && this.database.length && itemToModify){
             
             const propsToReplace = Object
                 .keys(request.body)
@@ -98,7 +95,7 @@ class MetodosServidor{
 
         const itemToRemove = this.database.filter(element => element.id === id)[0]
 
-        if (id !== 0 && this.database.length > 0 && itemToRemove){
+        if (id !== 0 && this.database.length && itemToRemove){
 
             this.database = this.database.filter(element => element.id !== id) 
             return response.status(200).json(itemToRemove);

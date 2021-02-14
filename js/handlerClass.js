@@ -35,8 +35,6 @@ class MetodosServidor {
         request.headers['content-type'] === 'application/x-www-form-urlencoded'
             ? response.status(201).redirect('/index.html')
             : response.status(201).json(nuevoItem);
-        // console.log(request.headers)
-        // response.status(201).json(nuevoItem)
     }
     replaceData(request, response) {
         let { id } = request.params;

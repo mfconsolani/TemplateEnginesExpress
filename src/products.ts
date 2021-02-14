@@ -1,11 +1,10 @@
 import express, {Request, Response} from 'express';
-import MetodosServidor, { Product } from './handlerClass';
+
+import MetodosServidor from './handlerClass';
 
 export const productRoutes = express.Router();
 
-let db:Array<Product> = [];
-
-let instance = new MetodosServidor(db);
+let instance = new MetodosServidor([]);
 
 // Get requests
 

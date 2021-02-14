@@ -7,8 +7,7 @@ exports.productRoutes = void 0;
 const express_1 = __importDefault(require("express"));
 const handlerClass_1 = __importDefault(require("./handlerClass"));
 exports.productRoutes = express_1.default.Router();
-let db = [];
-let instance = new handlerClass_1.default(db);
+let instance = new handlerClass_1.default([]);
 // Get requests
 // Listar todos los productos
 exports.productRoutes.get('/productos', (req, res) => {
