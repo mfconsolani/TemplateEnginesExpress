@@ -32,7 +32,11 @@ class MetodosServidor {
             id: newId
         };
         this.database.push(nuevoItem);
-        response.status(201).json(nuevoItem);
+        request.headers['content-type'] === 'application/x-www-form-urlencoded'
+            ? response.status(201).redirect(__dirname + './public/index.html')
+            : response.status(201).json(nuevoItem);
+        // console.log(request.headers)
+        // response.status(201).json(nuevoItem)
     }
     replaceData(request, response) {
         let { id } = request.params;

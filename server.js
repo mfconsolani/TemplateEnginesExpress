@@ -38,10 +38,7 @@ router.get('/productos', (req, res) => {
 });
 // 
 router.get('/productos/vista', (req, res) => {
-    // res.render('main', { data: instance.database });
     instance.renderApp(req, res);
-    // const renderApp:any = res.render('main', {data: instance.database})
-    // return renderApp();
 });
 // Listar un producto específico
 router.get('/productos/:id', (req, res) => {
