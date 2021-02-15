@@ -1,49 +1,38 @@
-import express, { Application } from 'express';
-
-import { productRoutes } from './products';
-
-import path from 'path'; 
-
-const handlebars = require('express-handlebars');
+import express, { Application } from "express";
+import { productRoutes } from "./products";
+import path from "path";
+import pug from "pug";
+// import handlebars from "express-handlebars";
 
 // Global variables
-const app:Application = express();
+const app: Application = express();
 
 const PORT = 8080;
 
 // Middleware
 
-app.engine('hbs', 
-    handlebars({
-        extname: '.hbs',
-        defaultLayout: 'index.hbs',
-        layoutsDir: path.join(__dirname, '../views/layouts'),
-        partialsDir: path.join(__dirname, '../views/partials')
-        })
-    );
+app.set("view engine", "pug");
 
-app.set('view engine', 'hbs');
-
-app.set('views', './views');
+app.set("views", "./views");
 
 app.use(express.static(path.join(__dirname, "../public")));
 
 app.use(express.json());
 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 // Server Port config
 
-const server:any = app.listen(PORT, () => {
-    console.log(`Servidor escuchando en puerto ${server.address().port}`)
+const server: any = app.listen(PORT, () => {
+  console.log(`Servidor escuchando en puerto ${server.address().port}`);
 });
 
-server.on("Error", (error:Error) => {
-    console.log(`Se produjo el siguiente error al inicializar el servidor: ${error}`)
+server.on("Error", (error: Error) => {
+  console.log(
+    `Se produjo el siguiente error al inicializar el servidor: ${error}`
+  );
 });
 
 // Router
 
-app.use('/api', productRoutes);
-
-
+app.use("/api", productRoutes);
