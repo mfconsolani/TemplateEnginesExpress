@@ -106,7 +106,7 @@ class MetodosServidor{
 
     renderApp(request: Request, response: Response){
 
-        response.render('main', {data: this.database})
+        response.render('layouts/main', {data: this.database})
     }
 
 };

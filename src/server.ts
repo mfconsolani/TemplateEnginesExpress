@@ -2,9 +2,9 @@ import express, { Application } from 'express';
 
 import { productRoutes } from './products';
 
-import path from 'path'; 
+import handlebars from 'express-handlebars';
 
-const handlebars = require('express-handlebars');
+import path from 'path'; 
 
 // Global variables
 const app:Application = express();
