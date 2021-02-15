@@ -9,13 +9,13 @@ div.container
                 th(class="text-center") Foto
             tbody
             each product in data
-            tr.container
-                td(class="align-middle text-center") #{product.title}
-                td(class="align-middle text-center") US$ #{product.price}
-                td(class="align-middle text-center")
-                    img(src=#{data.thumbnail} style="height: 100px" alt="{{this.title}}")
+                tr.container
+                    td(class="align-middle text-center") #{product.title}
+                    td(class="align-middle text-center") US$ #{product.price}
+                    td(class="align-middle text-center")
+                        img(src=`{data.thumbnail}` style="height: 100px" alt=`{product.title}`)
     
     else
-    div.container
-        div(class="alert alert-danger text-center align-middle m-5" role="alert")
-            p No se encontraron productos
+        div.container
+            div(class="alert alert-danger text-center align-middle m-5" role="alert")
+                p No se encontraron productos
