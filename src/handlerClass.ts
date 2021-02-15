@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
 
+import path from 'path';
+
 
 export interface Product {
     title: string,
@@ -106,7 +108,7 @@ class MetodosServidor{
 
     renderApp(request: Request, response: Response){
 
-        response.render('layouts/main', {data: this.database})
+        response.render(path.join(__dirname, '../views/layouts/main'), {data: this.database})
     }
 
 };
