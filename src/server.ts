@@ -2,7 +2,7 @@ import express, { Application } from 'express';
 
 import { productRoutes } from './products';
 
-import handlebars from 'express-handlebars';
+import ejs from 'ejs';
 
 import path from 'path'; 
 
@@ -13,18 +13,7 @@ const PORT = 8080;
 
 // Middleware
 
-app.engine('hbs', 
-    handlebars({
-        extname: '.hbs',
-        defaultLayout: 'index.hbs',
-        layoutsDir: path.join(__dirname, '../views/layouts'),
-        partialsDir: path.join(__dirname, '../views/partials')
-        })
-    );
-
-app.set('view engine', 'hbs');
-
-app.set('views', './views');
+app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, "../public")));
 

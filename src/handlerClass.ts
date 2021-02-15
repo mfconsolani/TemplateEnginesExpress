@@ -108,7 +108,7 @@ class MetodosServidor{
 
     renderApp(request: Request, response: Response){
 
-        response.render(path.join(__dirname, '../views/layouts/main'), {data: this.database})
+        response.render(path.join(__dirname, '../views/layouts/index'), {data: this.database})
     }
 
 };

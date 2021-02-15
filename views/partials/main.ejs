@@ -1,5 +1,5 @@
 <div class="container">
-{{#if data}}
+<% if (data > 0) { %>
     <table class="table m-3 table-bordered">
         <thead class="thead-dark">
         <tr>
@@ -8,22 +8,24 @@
             <th class="text-center">Foto</th>
         </tr>
         </thead>
-        {{#each data}}
+        <% data.forEach(function(element) { %>
         <tbody class="">
         <tr class="container">
-            <td class="align-middle text-center">{{this.title}}</td>
-            <td class="align-middle text-center">US$ {{this.price}}</td>
-            <td class="align-middle text-center"><img src="{{this.thumbnail}}" style="height: 100px" alt="{{this.title}}"></td>
+            <td class="align-middle text-center"><%= element.title %></td>
+            <td class="align-middle text-center">US$ <%= element.price %></td>
+            <td class="align-middle text-center"><img src="<%= element.thumbnail %>" 
+                style="height: 100px" 
+                alt="<%= element.thumbnail %>"></td>
         </tr>
         </tbody>
-        {{/each}}
+        <% }); %>
     </table>
     
-{{else}}
+<% } else { %>
     <div class="container">
         <div class="alert alert-danger text-center align-middle m-5" role="alert">
             <p>No se encontraron productos</p>
         </div>
     </div>
-{{/if}}
+<% } %>
 </div>
