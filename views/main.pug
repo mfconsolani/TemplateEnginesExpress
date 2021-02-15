@@ -1,21 +1,33 @@
-div.container
-#data
-    if data
-        table(class="table m-3 table-bordered")
-            thead(class="thead-dark")
-            tr
-                th(class="text-center") Nombre
-                th(class="text-center") Precio
-                th(class="text-center") Foto
-            tbody
-            each product in data
-                tr.container
-                    td(class="align-middle text-center") #{product.title}
-                    td(class="align-middle text-center") US$ #{product.price}
-                    td(class="align-middle text-center")
-                        img(src=`{data.thumbnail}` style="height: 100px" alt=`{product.title}`)
-    
-    else
-        div.container
-            div(class="alert alert-danger text-center align-middle m-5" role="alert")
-                p No se encontraron productos
+// TODO 
+// chequear bien bootstrap y el thumbnail que no lo toma
+html(lang="en")
+head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
+    title Productos
+body
+    div.container
+    #data
+        if data
+            table(class="table m-3 table-bordered")
+                thead(class="thead-dark")
+                tr
+                    th(class="text-center") Nombre
+                    th(class="text-center") Precio
+                    th(class="text-center") Foto
+                tbody
+                each product in data
+                    tr.container
+                        td(class="align-middle text-center") #{product.title}
+                        td(class="align-middle text-center") US$ #{product.price}
+                        td(class="align-middle text-center")
+                            img(src=product.thumbnail style="height: 100px" alt=product.title)
+        
+        else
+            div.container
+                div(class="alert alert-danger text-center align-middle m-5" role="alert")
+                    p No se encontraron productos
+script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
+script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
