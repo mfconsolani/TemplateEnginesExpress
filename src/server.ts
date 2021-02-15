@@ -4,7 +4,7 @@ import { productRoutes } from './products';
 
 import path from 'path'; 
 
-import handlebars from 'express-handlebars'
+import handlebars from 'express-handlebars';
 
 // Global variables
 const app:Application = express();
