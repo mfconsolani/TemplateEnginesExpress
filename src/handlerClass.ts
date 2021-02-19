@@ -38,6 +38,7 @@ class MetodosServidor{
 
             return response.status(200).json(productSearched)
         } 
+        
         return response.status(200).send({ alerta: 'producto no encontrado' })
     }
 

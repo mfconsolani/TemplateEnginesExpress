@@ -1,6 +1,6 @@
 import express, { Application } from 'express';
 
-import { productRoutes } from './products';
+import { productRoutes } from './productRoutes';
 
 import path from 'path'; 
 
