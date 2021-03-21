@@ -36,10 +36,10 @@ class MetodosServidor{
 
         if (id !== 0 && this.database.length && productSearched){
 
-            return response.status(200).json(productSearched)
+            return response.status(200).json(productSearched);
         } 
         
-        return response.status(200).send({ alerta: 'producto no encontrado' })
+        return response.status(200).send({ alerta: 'producto no encontrado' });
     }
 
     saveProduct(request: Request, response: Response){
