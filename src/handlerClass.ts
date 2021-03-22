@@ -84,7 +84,7 @@ class MetodosServidor{
             ? propsToReplace.forEach((prop:string) => itemToModify[prop] = request.body[prop])
             : null
             
-            return response.status(200).json(itemToModify)
+            return response.status(200).json(itemToModify);
         }
 
         return response.status(200).send({ alerta: 'producto no encontrado' })
