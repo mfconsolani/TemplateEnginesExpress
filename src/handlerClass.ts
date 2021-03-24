@@ -104,7 +104,7 @@ class MetodosServidor{
             return response.status(200).json(itemToRemove);
         } 
 
-        return response.status(200).send({ alerta: 'producto no encontrado' })
+        return response.status(200).send({ alerta: 'producto no encontrado' });
     }
 
     renderApp(request: Request, response: Response){
