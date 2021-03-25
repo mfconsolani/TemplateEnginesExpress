@@ -29,7 +29,7 @@ productRoutes.get('/productos/:id', (req: Request, res: Response) => {
 
 // Cargar un nuevo producto
 productRoutes.post('/productos/', (req: Request, res: Response)=> { 
-    instance.saveProduct(req, res)
+    instance.saveProduct(req, res);
 });
 
 // Put requests
