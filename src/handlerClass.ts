@@ -23,7 +23,7 @@ class MetodosServidor{
         
         this.database.length 
         ? response.json(this.database) 
-        : response.status(200).json({ alerta: 'no hay productos cargados' })
+        : response.status(200).json({ alerta: 'no hay productos cargados' });
     };
 
     displayOne(request: Request, response: Response){
