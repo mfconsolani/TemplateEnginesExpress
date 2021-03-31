@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 
 import path from 'path';
 
-
 export interface Product {
     title: string,
     price: number,
@@ -11,11 +10,8 @@ export interface Product {
 };
 
 class MetodosServidor{
-
     database: Array<Product>;
-    
     constructor(database: Array<Product>){
-
         this.database = database;
     };
     
@@ -29,13 +25,9 @@ class MetodosServidor{
     displayOne(request: Request, response: Response){
 
         let { id }:any = request.params;
-
         id = parseInt(id);
-        
         const productSearched = this.database.filter((product: Product) => product.id === id)[0];
-
         if (id !== 0 && this.database.length && productSearched){
-
             return response.status(200).json(productSearched);
         } 
         
